@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="SeminarioPractica.controller.LoginController">
+    <center>
+        <VBox alignment="CENTER" spacing="16" styleClass="card" BorderPane.alignment="CENTER">
+            <Label text="TP3 - Login" styleClass="title"/>
+            <VBox spacing="8" maxWidth="260">
+                <Label text="Email"/>
+                <TextField fx:id="txtEmail" promptText="encargado@andina.com"/>
+                <Label text="Contraseña"/>
+                <PasswordField fx:id="txtPassword" promptText="demo"/>
+                <Label fx:id="lblEstado" styleClass="error"/>
+            </VBox>
+            <HBox spacing="10">
+                <Button text="Ingresar" onAction="#ingresar" defaultButton="true"/>
+                <Button text="Salir" onAction="#salir" cancelButton="true"/>
+            </HBox>
+        </VBox>
+    </center>
+</BorderPane>

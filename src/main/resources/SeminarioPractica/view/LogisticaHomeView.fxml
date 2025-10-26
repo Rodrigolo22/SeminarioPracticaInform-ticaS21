@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml"
+            fx:controller="SeminarioPractica.controller.LogisticaController">
+
+    <top>
+        <Label text="Solicitudes - LOGÍSTICA" styleClass="title" BorderPane.alignment="CENTER"/>
+    </top>
+
+    <center>
+        <VBox spacing="10" styleClass="card">
+            <TableView fx:id="tblSolicitudes" prefHeight="420">
+                <columns>
+                    <TableColumn fx:id="colId"           text="ID"         prefWidth="70"/>
+                    <TableColumn fx:id="colObra"         text="Obra"       prefWidth="200"/>
+                    <TableColumn fx:id="colSolicitante"  text="Solicitante" prefWidth="180"/>
+                    <TableColumn fx:id="colFecha"        text="Fecha"      prefWidth="100"/>
+                    <TableColumn fx:id="colPrioridad"    text="Prioridad"  prefWidth="100"/>
+                    <TableColumn fx:id="colEstado"       text="Estado"     prefWidth="120"/>
+                    <TableColumn fx:id="colDescripcion"  text="Descripción" prefWidth="400"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox alignment="CENTER_RIGHT" spacing="10">
+            <padding><Insets topRightBottomLeft="10"/></padding>
+            <Button text="Actualizar" onAction="#actualizar"/>
+            <Button text="Rechazar"  onAction="#rechazar"/>
+            <Button text="Aprobar"   onAction="#aprobar" defaultButton="true"/>
+            <Button text="Volver"    onAction="#volver"/>
+        </HBox>
+    </bottom>
+</BorderPane>
