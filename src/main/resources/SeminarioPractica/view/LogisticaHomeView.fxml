@@ -1,38 +1,56 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?import javafx.geometry.*?>
+
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<BorderPane xmlns:fx="http://javafx.com/fxml"
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
             fx:controller="SeminarioPractica.controller.LogisticaController">
 
     <top>
-        <Label text="Solicitudes - LOGÍSTICA" styleClass="title" BorderPane.alignment="CENTER"/>
+        <VBox alignment="CENTER" spacing="5">
+            <padding><Insets top="10" right="10" bottom="10" left="10"/></padding>
+            <Label text="Logística - Solicitudes" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+            <Label text="Doble clic sobre una solicitud para ver el detalle completo."
+                   style="-fx-font-size: 11px; -fx-text-fill: #555;"/>
+        </VBox>
     </top>
 
     <center>
-        <VBox spacing="10" styleClass="card">
-            <TableView fx:id="tblSolicitudes" prefHeight="420">
+        <VBox spacing="5">
+            <padding><Insets top="0" right="10" bottom="10" left="10"/></padding>
+
+            <TableView fx:id="tblSolicitudes" prefHeight="400">
                 <columns>
-                    <TableColumn fx:id="colId"           text="ID"         prefWidth="70"/>
-                    <TableColumn fx:id="colObra"         text="Obra"       prefWidth="200"/>
-                    <TableColumn fx:id="colSolicitante"  text="Solicitante" prefWidth="180"/>
-                    <TableColumn fx:id="colFecha"        text="Fecha"      prefWidth="100"/>
-                    <TableColumn fx:id="colPrioridad"    text="Prioridad"  prefWidth="100"/>
-                    <TableColumn fx:id="colEstado"       text="Estado"     prefWidth="120"/>
-                    <TableColumn fx:id="colDescripcion"  text="Descripción" prefWidth="400"/>
+                    <TableColumn fx:id="colId" text="ID" prefWidth="60"/>
+                    <TableColumn fx:id="colObra" text="Obra" prefWidth="200"/>
+                    <TableColumn fx:id="colSolicitante" text="Solicitante" prefWidth="180"/>
+                    <TableColumn fx:id="colFecha" text="Fecha" prefWidth="120"/>
+                    <TableColumn fx:id="colPrioridad" text="Prioridad" prefWidth="100"/>
+                    <TableColumn fx:id="colEstado" text="Estado" prefWidth="120"/>
+                    <TableColumn fx:id="colDescripcion" text="Descripción" prefWidth="400"/>
                 </columns>
             </TableView>
+
         </VBox>
     </center>
 
     <bottom>
-        <HBox alignment="CENTER_RIGHT" spacing="10">
-            <padding><Insets topRightBottomLeft="10"/></padding>
+        <HBox spacing="10" alignment="CENTER_RIGHT">
+            <padding><Insets top="5" right="10" bottom="10" left="10"/></padding>
+
+            <Label text="Nuevo estado:"/>
+            <ComboBox fx:id="cboNuevoEstado" prefWidth="180"/>
+
+            <Button text="Ver historial" onAction="#verHistorial"/>
+            <Button text="Cambiar estado" onAction="#cambiarEstado"/>
+            <Button text="Rechazar" onAction="#rechazar"/>
             <Button text="Actualizar" onAction="#actualizar"/>
-            <Button text="Rechazar"  onAction="#rechazar"/>
-            <Button text="Aprobar"   onAction="#aprobar" defaultButton="true"/>
-            <Button text="Volver"    onAction="#volver"/>
+            <Button text="Volver" onAction="#volver"/>
+
         </HBox>
     </bottom>
+
 </BorderPane>

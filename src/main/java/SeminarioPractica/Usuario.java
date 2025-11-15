@@ -1,6 +1,7 @@
 package SeminarioPractica;
 
 public class Usuario {
+
     private int id;
     private String nombre;
     private String apellido;
@@ -9,9 +10,16 @@ public class Usuario {
     private Rol rol;
     private boolean activo;
 
-    public Usuario() {}
+    public Usuario() {
+    }
 
-    public Usuario(int id, String nombre, String apellido, String email, String password, Rol rol, boolean activo) {
+    public Usuario(int id,
+                   String nombre,
+                   String apellido,
+                   String email,
+                   String password,
+                   Rol rol,
+                   boolean activo) {
         this.id = id;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -21,27 +29,63 @@ public class Usuario {
         this.activo = activo;
     }
 
-    // Getters y setters
-    public int getId() { return id; }
-    public void setId(int id) { this.id = id; }
+    // GETTERS / SETTERS
 
-    public String getNombre() { return nombre; }
-    public void setNombre(String nombre) { this.nombre = nombre; }
+    public int getId() {
+        return id;
+    }
 
-    public String getApellido() { return apellido; }
-    public void setApellido(String apellido) { this.apellido = apellido; }
+    public void setId(int id) {
+        this.id = id;
+    }
 
-    public String getEmail() { return email; }
-    public void setEmail(String email) { this.email = email; }
+    public String getNombre() {
+        return nombre;
+    }
 
-    public String getPassword() { return password; }
-    public void setPassword(String password) { this.password = password; }
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-    public Rol getRol() { return rol; }
-    public void setRol(Rol rol) { this.rol = rol; }
+    public String getApellido() {
+        return apellido;
+    }
 
-    public boolean isActivo() { return activo; }
-    public void setActivo(boolean activo) { this.activo = activo; }
+    public void setApellido(String apellido) {
+        this.apellido = apellido;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public Rol getRol() {
+        return rol;
+    }
+
+    public void setRol(Rol rol) {
+        this.rol = rol;
+    }
+
+    public boolean isActivo() {
+        return activo;
+    }
+
+    public void setActivo(boolean activo) {
+        this.activo = activo;
+    }
 
     @Override
     public String toString() {

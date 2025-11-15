@@ -5,59 +5,76 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-/**
- Clase auxiliar que maneja la navegación entre pantallas (FXML).
- Centraliza el cambio de vistas dentro del mismo Stage principal.
- */
+import java.io.IOException;
+import java.net.URL;
+
 public class SceneRouter {
 
-    // Stage principal de la aplicación.
     private static Stage stage;
 
-    /**
-     Inicializa el Stage que usará toda la app.
-     Se lo llama una sola vez desde MainFX.start().
-     */
-    public static void init(Stage s) {
+    public static void setStage(Stage s) {
         stage = s;
     }
 
-    /**
-     Carga un archivo FXML y lo muestra en pantalla.
-     Aplica el CSS general y define el título de la ventana.
-     */
     private static void go(String fxml, String title) {
         try {
-            // Carga el layout desde el recurso indicado
-            Parent root = FXMLLoader.load(SceneRouter.class.getResource("/SeminarioPractica/view/" + fxml));
 
-            // Crea una nueva escena con el contenido cargado
-            Scene sc = new Scene(root);
+            String path = "/SeminarioPractica/view/" + fxml;
 
-            // Aplica hoja de estilos si existe
-            String css = "/SeminarioPractica/view/styles.css";
-            if (SceneRouter.class.getResource(css) != null) {
-                sc.getStylesheets().add(SceneRouter.class.getResource(css).toExternalForm());
+            URL url = SceneRouter.class.getResource(path);
+            if (url == null) {
+                throw new IllegalStateException("No se encontró el recurso FXML: " + path);
             }
 
-            // Configura la ventana principal
+            Parent root = FXMLLoader.load(url);
             stage.setTitle(title);
-            stage.setScene(sc);
-            stage.centerOnScreen();
+            stage.setScene(new Scene(root));
             stage.show();
-
-        } catch (Exception e) {
-            // Si ocurre un error al cargar la vista, imprime el detalle
+        } catch (IOException e) {
             e.printStackTrace();
-            throw new RuntimeException("Error al cargar vista " + fxml + ": " + e.getMessage());
+            throw new RuntimeException("Error al cargar la vista " + fxml, e);
         }
     }
 
-    // Métodos públicos para acceder a las distintas pantallas
-    public static void goLogin()          { go("LoginView.fxml", "Login"); }
-    public static void goAdminHome()      { go("AdminHomeView.fxml", "Inicio - ADMIN"); }
-    public static void goEncargadoHome()  { go("EncargadoHomeView.fxml", "Inicio - ENCARGADO"); }
-    public static void goMisSolicitudes() { go("MisSolicitudesView.fxml", "Mis Solicitudes"); }
-    public static void goNuevaSolicitud() { go("NuevaSolicitudView.fxml", "Nueva Solicitud"); }
-    public static void goLogisticaHome()  { go("LogisticaHomeView.fxml", "Logística - Solicitudes"); }
+    public static void goLogin() {
+        go("LoginView.fxml", "TP3 - Login");
+    }
+
+    public static void goEncargadoHome() {
+        go("EncargadoHomeView.fxml", "Inicio - Encargado");
+    }
+
+    public static void goNuevaSolicitud() {
+        go("NuevaSolicitudView.fxml", "Nueva Solicitud");
+    }
+
+    public static void goMisSolicitudes() {
+        go("MisSolicitudesView.fxml", "Mis Solicitudes");
+    }
+
+    public static void goLogisticaHome() {
+        go("LogisticaHomeView.fxml", "Logística - Solicitudes");
+    }
+
+    public static void goAdminHome() {
+        go("AdminHomeView.fxml", "Inicio - ADMIN");
+    }
+
+    public static void goSolicitudDetalle() {
+        go("SolicitudDetalleView.fxml", "Detalle de Solicitud");
+    }
+
+    public static void goAbmObras() {
+        go("ObraABMView.fxml", "ABM de Obras");
+    }
+
+    public static void goAbmEncargados() {
+        go("EncargadoABMView.fxml", "ABM de Encargados");
+    }
+
+    public static void goHistorialSolicitud() {
+        go("SolicitudHistorialView.fxml", "Historial de Solicitud");
+    }
+
+
 }

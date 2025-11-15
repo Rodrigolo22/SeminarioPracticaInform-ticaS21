@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx"
+            xmlns:fx="http://javafx.com/fxml"
+            fx:controller="SeminarioPractica.controller.SolicitudDetalleController">
+
+    <top>
+        <VBox spacing="5" alignment="CENTER" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <Label text="Detalle de Solicitud"
+                   style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+
+            <!-- Cabecera de datos de la solicitud -->
+            <GridPane hgap="10" vgap="5">
+                <padding>
+                    <Insets top="5" right="5" bottom="5" left="5"/>
+                </padding>
+
+                <columnConstraints>
+                    <ColumnConstraints minWidth="80" halignment="RIGHT"/>
+                    <ColumnConstraints hgrow="ALWAYS"/>
+                </columnConstraints>
+
+                <children>
+                    <Label text="Obra:" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+                    <Label fx:id="lblObra" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
+
+                    <Label text="Solicitante:" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
+                    <Label fx:id="lblSolicitante" GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+
+                    <Label text="Fecha:" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
+                    <Label fx:id="lblFecha" GridPane.rowIndex="2" GridPane.columnIndex="1"/>
+
+                    <Label text="Prioridad:" GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+                    <Label fx:id="lblPrioridad" GridPane.rowIndex="3" GridPane.columnIndex="1"/>
+
+                    <Label text="Estado:" GridPane.rowIndex="4" GridPane.columnIndex="0"/>
+                    <Label fx:id="lblEstado" GridPane.rowIndex="4" GridPane.columnIndex="1"/>
+                </children>
+            </GridPane>
+        </VBox>
+    </top>
+
+    <center>
+        <VBox spacing="5" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="0" right="10" bottom="10" left="10"/>
+            </padding>
+
+            <Label text="Items solicitados:"
+                   style="-fx-font-weight: bold;"/>
+
+            <TableView fx:id="tblDetalle" prefHeight="300">
+                <columns>
+                    <TableColumn fx:id="colDescripcion" text="Descripción" prefWidth="400"/>
+                    <TableColumn fx:id="colCantidad" text="Cantidad" prefWidth="100"/>
+                    <TableColumn fx:id="colUnidad" text="Unidad" prefWidth="100"/>
+                </columns>
+            </TableView>
+        </VBox>
+    </center>
+
+    <bottom>
+        <HBox spacing="10" alignment="CENTER_RIGHT" BorderPane.alignment="CENTER">
+            <padding>
+                <Insets top="5" right="10" bottom="10" left="10"/>
+            </padding>
+            <Button text="Volver" onAction="#volver"/>
+        </HBox>
+    </bottom>
+
+</BorderPane>
